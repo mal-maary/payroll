@@ -15,7 +15,8 @@ import jakarta.persistence.Id;
 @Table(name = "employees")
 class Employee {
 
-    private @Id @GeneratedValue Long id;
+    @SequenceGenerator(name = "employees_seq", sequenceName = "employees_seq", allocationSize = 1)
+    private @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employees_seq") Long id;
     private String firstName;
     private String lastName;
     private String role;
